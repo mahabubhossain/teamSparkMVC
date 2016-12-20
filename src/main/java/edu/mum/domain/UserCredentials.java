@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
  
@@ -27,8 +28,17 @@ public class UserCredentials {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="credentials_id") 
 	List<Authority> authority = new ArrayList<Authority>();
+    
+    @OneToOne(mappedBy="userCredentials", cascade = CascadeType.PERSIST) 
+    private Member member;
 
- 	public String getUsername() {
+ 	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
+	}
+	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {

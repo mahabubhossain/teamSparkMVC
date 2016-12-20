@@ -14,10 +14,10 @@ public class OrderItem implements Serializable {
  
    private Order order;
 
-    private Product product;
+    private Item product;
     
 	   public OrderItem() {}
-	   public OrderItem (Integer  quantity,  Product product ) {
+	   public OrderItem (Integer  quantity,  Item product ) {
 		   this.quantity = quantity;
  		   this.product = product;
 	   }
@@ -55,11 +55,11 @@ public void setOrder(Order order) {
 	this.order = order;
 }
 
-public Product getProduct() {
+public Item getProduct() {
 	return product;
 }
 
-public void setProduct(Product product) {
+public void setProduct(Item product) {
 	this.product = product;
 }
    
