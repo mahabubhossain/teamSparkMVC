@@ -1,6 +1,5 @@
 package edu.mum.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.mum.service.MemberService;
 import edu.mum.domain.Member;
+import edu.mum.service.MemberService;
 
 @Controller
 @RequestMapping({"/members"})

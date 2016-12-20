@@ -1,14 +1,12 @@
 package edu.mum.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mum.dao.GenericDao;
-import edu.mum.dao.AddressDao;
+import edu.mum.aspect.annotation.Logging;
 import edu.mum.domain.Address;
+import edu.mum.rest.service.AddressRestService;
 
 @Service
 @Transactional 
@@ -16,24 +14,26 @@ public class AddressServiceImpl implements edu.mum.service.AddressService {
 	
 	
  	@Autowired
-	private AddressDao memberDao;
+	//private AddressDao memberDao;
+ 	private AddressRestService addressRestService;
 
+ 	@Logging
     public void save( Address address) {  		
-		memberDao.save(address);
+    	addressRestService.save(address);
 	}
 	
 	
-    public void update( Address address) {  		
+    /*public void update( Address address) {  		
 		memberDao.update(address);
-	}
+	}*/
 	
 	
-	public List<Address> findAll() {
-		return (List<Address>)memberDao.findAll();
+	/*public List<Address> findAll() {
+		return (List<Address>)addressRestService.findAll();
 	}
-
+*/
  	public Address findOne(Long id) {
-		return memberDao.findOne(id);
+		return addressRestService.findOne(id);
 	}
 
 

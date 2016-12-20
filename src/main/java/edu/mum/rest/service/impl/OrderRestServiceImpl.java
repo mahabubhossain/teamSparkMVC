@@ -10,38 +10,38 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import edu.mum.aspect.annotation.Logging;
-import edu.mum.domain.Product;
+import edu.mum.domain.Order;
 import edu.mum.rest.RestHttpHeader;
-import edu.mum.rest.service.ProductRestService;
+import edu.mum.rest.service.OrderRestService;
 
 @Component("MVC")
-public class ProductRestServiceImpl  implements ProductRestService {
+public class OrderRestServiceImpl  implements OrderRestService {
 
 	@Autowired
 	RestHttpHeader remoteApi;
 	
-	public List<Product> findAll() {
+	public List<Order> findAll() {
 		
 		RestTemplate restTemplate = remoteApi.getRestTemplate();
-		return Arrays.asList(restTemplate.exchange("http://localhost:8080/TeamSparkRest/products/", 
-				HttpMethod.GET, remoteApi.getHttpEntity(), Product[].class).getBody());
+		return Arrays.asList(restTemplate.exchange("http://localhost:8080/TeamSparkRest/orders/", 
+				HttpMethod.GET, remoteApi.getHttpEntity(), Order[].class).getBody());
                                //remoteApi.getHttpEntity() - get HTTP headers [Authentication; JSON ACCEPT]
 	}
 
 	@Logging
-	public Product findOne(Long index) {
+	public Order findOne(Long index) {
 		RestTemplate restTemplate = remoteApi.getRestTemplate();
- 		return (restTemplate.exchange("http://localhost:8080/TeamSparkRest/products/"+ index, 
- 				HttpMethod.GET, remoteApi.getHttpEntity(), Product.class).getBody());
+ 		return (restTemplate.exchange("http://localhost:8080/TeamSparkRest/orders/"+ index, 
+ 				HttpMethod.GET, remoteApi.getHttpEntity(), Order.class).getBody());
                                                            // Returns Product in Body HTTP Message 
 	}
 
 	@Logging
-	public Product save(Product product) {
+	public Order save(Order order) {
 		RestTemplate restTemplate = remoteApi.getRestTemplate();
-		HttpEntity<Product> httpEntity = new HttpEntity<Product>(product, remoteApi.getHttpHeaders());
-		restTemplate.postForObject("http://localhost:8080/TeamSparkRest/products/add/", 
-				        httpEntity, Product.class);
+		HttpEntity<Order> httpEntity = new HttpEntity<Order>(order, remoteApi.getHttpHeaders());
+		restTemplate.postForObject("http://localhost:8080/TeamSparkRest/orders/add/", 
+				        httpEntity, Order.class);
                                      // Product.class - Response type
 
  		return null;

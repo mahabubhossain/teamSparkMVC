@@ -10,7 +10,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import edu.mum.domain.UserCredentials;
 import edu.mum.service.CredentialsService;
-import edu.mum.service.MemberService;
 
 @Controller
 @SessionAttributes("member")
