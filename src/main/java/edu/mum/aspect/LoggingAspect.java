@@ -15,13 +15,13 @@ public class LoggingAspect {
 	// @Pointcut("execution(* edu.mum.service..*(..))")
 	// @Pointcut("execution(* edu.mum.service..update(..))") // - If you want to
 	// AOP ONLY updates...IGNORES Save
-	public void applicationMethod() {
+/*	public void applicationMethod() {
 	}
 
 	@Pointcut("@annotation(edu.mum.aspect.annotation.Logging)")
 	public void logging() {
 		// System.out.println("Advice logging");
-	}
+	}*/
 
 	// @After("@annotation(edu.mum.aspect.annotation.Logging")
 
@@ -29,7 +29,8 @@ public class LoggingAspect {
 	// @Before("logging() && applicationMethod()")
 	// @Before("execution(* *.*.*..*(..))") // "indiscriminate" application Try
 	// it!
-	@Before("within(edu.mum.service.impl) && logging()")
+	//@Before("within(edu.mum.service.impl) && logging()")
+	@Before("execution(* edu.mum.service..*(..))")
 	public void logResource(JoinPoint joinPoint) {
 		Logger log = Logger.getLogger("");
 		log.info("   **********     TARGET CLASS : service request "
@@ -40,7 +41,7 @@ public class LoggingAspect {
 				+ joinPoint.getSignature().getName() + "    **********");
 	}
 	
-	@Before("within(edu.mum.rest.service.impl) && logging()")
+	/*@Before("within(edu.mum.rest.service.impl) && logging()")
 	public void logRestResource(JoinPoint joinPoint) {
 		Logger log = Logger.getLogger("");
 		log.info("   **********     TARGET CLASS : REST service request "
@@ -49,6 +50,6 @@ public class LoggingAspect {
 		System.out.println("   **********     TARGET CLASS : "
 				+ joinPoint.getSignature().getDeclaringTypeName() + "."
 				+ joinPoint.getSignature().getName() + "    **********");
-	}
+	}*/
 
 }

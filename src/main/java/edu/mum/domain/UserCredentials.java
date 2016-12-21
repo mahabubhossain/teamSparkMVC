@@ -28,15 +28,15 @@ public class UserCredentials {
     @JoinColumn(name="credentials_id") 
 	List<Authority> authority = new ArrayList<Authority>();
     
-    @OneToOne(mappedBy="userCredentials", cascade = CascadeType.PERSIST) 
-    private Member member;
+    //@OneToOne(mappedBy="userCredentials", cascade = CascadeType.PERSIST) 
+    //private Member member;
 
- 	public Member getMember() {
+ 	/*public Member getMember() {
 		return member;
 	}
 	public void setMember(Member member) {
 		this.member = member;
-	}
+	}*/
 	public String getUsername() {
 		return username;
 	}

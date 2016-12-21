@@ -14,7 +14,7 @@ import edu.mum.domain.Order;
 import edu.mum.rest.RestHttpHeader;
 import edu.mum.rest.service.OrderRestService;
 
-@Component("MVC")
+@Component
 public class OrderRestServiceImpl  implements OrderRestService {
 
 	@Autowired

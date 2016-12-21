@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.aspect.annotation.Logging;
+import edu.mum.dao.OrderDao;
 import edu.mum.domain.Order;
 import edu.mum.rest.service.OrderRestService;
 
@@ -15,17 +16,20 @@ import edu.mum.rest.service.OrderRestService;
 public class OrderServiceImpl implements edu.mum.service.OrderService {
 	
  	@Autowired
-	private OrderRestService orderRestService;
+	//private OrderRestService orderRestService;
+ 	private OrderDao orderDao;
 
 
  	@Logging
    public void save( Order userCredentials) {  		
- 		orderRestService.save(userCredentials);
+ 		//orderRestService.save(userCredentials);
+ 		orderDao.save(userCredentials);
  	}
   	
  	@Logging
  	public Order findOne(Long id) {
- 		return orderRestService.findOne(id);
+ 		//return orderRestService.findOne(id);
+ 		return orderDao.findOne(id);
  	}
 
   	/*public Order findByGraph(Long id) {
@@ -34,7 +38,8 @@ public class OrderServiceImpl implements edu.mum.service.OrderService {
   	}*/
   	
 	public List<Order> findAll() {
-		return (List<Order>)orderRestService.findAll();
+		//return (List<Order>)orderRestService.findAll();
+		return (List<Order>)orderDao.findAll();
 	}
 	
 	//@Logging

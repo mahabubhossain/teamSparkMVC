@@ -46,8 +46,16 @@ public class Member {
 	@Column(nullable = true)
  	private int memberNumber;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    private Set<Item> boughtItems = new HashSet<Item>();
+	//@OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    //private Set<Item> boughtItems = new HashSet<Item>();
+	
+	@OneToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL) 
+ 	@JoinColumn(name="memberId") 
+ 	UserCredentials userCredentials;
+ 	
+ 
+     @OneToMany(mappedBy="member",fetch=FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })  
+     private Set<Address> addresses = new HashSet<Address>();
 
 	public String getDob() {
 		return dob;
@@ -67,13 +75,6 @@ public class Member {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
-	@OneToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL) 
- 	@JoinColumn(name="memberId") 
- 	UserCredentials userCredentials;
- 	
- 
-     @OneToMany(mappedBy="member",fetch=FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })  
-     private Set<Address> addresses = new HashSet<Address>();
 
  	public long getId() {
 		return id;

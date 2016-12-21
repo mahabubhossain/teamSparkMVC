@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import edu.mum.aspect.annotation.Logging;
-import edu.mum.domain.Product;
 import edu.mum.domain.UserCredentials;
 import edu.mum.rest.RestHttpHeader;
 import edu.mum.rest.service.UserCredentialsRestService;
@@ -35,7 +34,7 @@ public class UserCredentialsRestServiceImpl implements UserCredentialsRestServic
 	public UserCredentials save(UserCredentials product) {
 		RestTemplate restTemplate = remoteApi.getRestTemplate();
 		HttpEntity<UserCredentials> httpEntity = new HttpEntity<UserCredentials>(product, remoteApi.getHttpHeaders());
-		restTemplate.postForObject("http://localhost:8080/TeamSparkRest/userCredentials/", httpEntity, Product.class);
+		restTemplate.postForObject("http://localhost:8080/TeamSparkRest/userCredentials/", httpEntity, UserCredentials.class);
 		return null;
 	}
 
